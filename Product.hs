@@ -4,7 +4,7 @@
 module Product where
 
 --
--- * Interface for ProductRack
+-- * Interface for Product 
 --
 
 -- | Interface.
