@@ -1,7 +1,9 @@
 {-# LANGUAGE ExistentialQuantification #-}
 
 -- | Product : A type class-based implementation of object-oriented Object
-module Product where
+module Product
+  (Product, item1, item2, item3, pid, name, price, description) 
+where
 
 --
 -- * Interface for Product 
@@ -12,7 +14,8 @@ class Product' p where
   pid' :: p -> Int 
   name' :: p -> String 
   price' :: p -> Int 
-  description' :: p -> String 
+  description' :: p -> String
+
 
 -- | Product instance wrapper.
 data Product = forall p. Product' p => Product p

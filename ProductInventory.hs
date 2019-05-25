@@ -20,3 +20,4 @@ extractColumn csv n =
   [ read (record !! n) | record <- csv
                        , length record > n
                        , record /= [""] ]
+
