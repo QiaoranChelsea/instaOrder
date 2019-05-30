@@ -1,10 +1,11 @@
 {-# LANGUAGE ExistentialQuantification #-}
 
 -- | Product : A type class-based implementation of object-oriented Object
-module Product
-  (Product, item1, item2, item3, pid, name, price, description) 
-where
+-- module Product
+--   (Product, Product', item1, item2, item3, pid, name, price, description) 
+-- where
 
+module Product where 
 --
 -- * Interface for Product 
 --

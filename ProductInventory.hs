@@ -3,7 +3,7 @@ module ProductInventory where
 
 import Text.CSV
 
--- | TODO: Unwrap the IO monad get the actual value 
+-- | TODO: use let to wrap value with IO monad 
 
 -- | get invenroty info in inventory.csv
 getInventoryInfo :: IO () 

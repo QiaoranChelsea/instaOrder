@@ -5,7 +5,10 @@ import ProductCmd
 import UserRoles 
 import Product 
 import Order 
+-- | extension module
+import ProductExtension
 
+-- TODO : 1. check whether the Item is already in the Product Module
 
 main :: IO ()
 main = undefined 
