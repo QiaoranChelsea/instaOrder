@@ -3,6 +3,7 @@ module Order where
 import UserRoles
 import Product
 import ProductCmd
+import Shipping
 
 data Order = Order 
 
@@ -15,13 +16,19 @@ data PlaceOrderCmd = PlaceOrderCmd
 
 -- concrete command implementation of placing user order
 instance ProductCmd PlaceOrderCmd where
-    placeOrder PlaceOrderCmd ps = let plist = getSingleCost ps
-                                      get3rd = \(_,_,c) -> c  
-                                      final = getFinalCost $ map get3rd plist 
-                                  in Just (plist,final)  
+    placeOrder PlaceOrderCmd m ps = let plist = getSingleCost ps
+                                        get3rd = \(_,_,c) -> c 
+                                        --get2nd = \(_,b,_) -> b 
+                                        final = getFinalCost $ map get3rd plist 
+                                        shippingcost = getFinalCost $ map (getShippingCost m) $ map snd ps
+                                    in Just (plist,final + shippingcost)  
 
 getSingleCost :: [(Product,Int)] -> [(Product,Int, Int)]
 getSingleCost ps = map (\(p,i) -> (p,i,(currentPrice p) * i)) ps 
+
+
+getShippingCost :: Shipping' m => m -> Int -> Int
+getShippingCost m w = calculateShippingCost m w 
 
 getFinalCost :: [Int] -> Int 
 getFinalCost ps = Prelude.foldl (+) 0 ps

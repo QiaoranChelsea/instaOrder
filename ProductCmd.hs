@@ -2,6 +2,7 @@ module ProductCmd where
 
 import Product 
 import qualified Data.Map as M
+import Shipping
 --
 -- * interface for Command
 --
@@ -11,7 +12,7 @@ class  ProductCmd cmd  where
     getProduct :: cmd -> Product -> String 
 
     -- Return (([pid,Qty,cost]),finalCost)
-    placeOrder :: cmd -> [(Product,Int)] -> Maybe ([(Product,Int,Int)],Int)   
+    placeOrder :: Shipping' m => cmd -> m -> [(Product,Int)] -> Maybe ([(Product,Int,Int)],Int)   
 
 --
 --  ** concrete command  

@@ -8,6 +8,7 @@ import Order
 -- | extension module
 import ProductExtension
 import UserRolesExtend
+import Shipping
 
 
 -- TODO : 1. check whether the Item is already in the Product Module
