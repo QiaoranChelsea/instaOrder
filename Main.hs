@@ -7,14 +7,16 @@ import Product
 import Order 
 -- | extension module
 import ProductExtension
+import UserRolesExtend
+
 
 -- TODO : 1. check whether the Item is already in the Product Module
 
 main :: IO ()
 main = undefined 
 -- | view Product from User 
-userEx = viewProduct User item1
+userEx = searchProduct User item1
 
-adminEx = viewProduct Admin item1
+adminEx = searchProduct Admin item1
 
-orderEx = viewProduct Order  item2
+orderEx = searchProduct Order  item2

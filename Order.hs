@@ -11,6 +11,6 @@ import ProductCmd
 data Order = Order 
 
 instance ProductReceiver Order where
-    viewProduct Order p = execute Cmd3 p
+    searchProduct Order p = execute Cmd3 p
 
 

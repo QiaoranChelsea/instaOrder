@@ -2,7 +2,7 @@
 
 -- | Product : A type class-based implementation of object-oriented Object
 -- module Product
---   (Product, Product', item1, item2, item3, pid, name, price, description) 
+--   (Product, Product', item1, item2, item3, productId, productName, currentPrice, productDescription) 
 -- where
 
 module Product where 
@@ -12,20 +12,20 @@ module Product where
 
 -- | Interface.
 class Product' p where
-  pid' :: p -> Int 
-  name' :: p -> String 
-  price' :: p -> Int 
-  description' :: p -> String
-
+  productId' :: p -> Int 
+  productName' :: p -> String 
+  currentPrice' :: p -> Int 
+  productDescription' :: p -> String
+  
 
 -- | Product instance wrapper.
 data Product = forall p. Product' p => Product p
 
 -- | Operations on wrapped instances.
-pid         (Product p) = pid'  p
-name        (Product p) = name' p
-price       (Product p) = price'   p
-description (Product p) = description' p
+productId          (Product p) = productId'  p
+productName        (Product p) = productName' p
+currentPrice       (Product p) = currentPrice'   p
+productDescription (Product p) = productDescription' p
 
 
 --
@@ -38,10 +38,11 @@ data Item1 = Item1
 item1 = Product Item1 
 
 instance Product' Item1 where
-  pid'         _ = 1 
-  name'        _ = "name1"
-  price'       _ = 100
-  description' _ = "description1"
+  productId'          _ = 1 
+  productName'        _ = "Design Patterns"
+  currentPrice'       _ = 100
+  productDescription' _ = "Its a introductory book for learning design paradigms in OO and FP"
+  
 
 -- * Item 2
 
@@ -49,20 +50,22 @@ data Item2 = Item2
 item2 = Product Item2
 
 instance Product' Item2 where
-  pid'         _ = 2 
-  name'        _ = "name2"
-  price'       _ = 200
-  description' _ = "description2"
+  productId'         _ = 2 
+  productName'        _ = "Harry Potter"
+  currentPrice'       _ = 200
+  productDescription' _ =  "Its a fantasy book"
+  
 
 -- * Item 3 
 data Item3 = Item3
 item3 = Product Item3
 
 instance Product' Item3 where
-  pid'         _ = 3 
-  name'        _ = "name3"
-  price'       _ = 300
-  description' _ = "description3"
+  productId'         _ = 3 
+  productName'        _ = "Thin Air"
+  currentPrice'       _ = 300
+  productDescription' _ = "Its a thriller story by Jessica Shaw"
+  
 
 --
 -- ** Examples 
@@ -70,7 +73,7 @@ instance Product' Item3 where
 plist = [Product Item1, Product Item2, Product Item3]
 
 productDetail :: Product -> String 
-productDetail = \p -> concat [show (pid p), " | " , name p, " | ", show (price p), " | ", description p]
+productDetail = \p -> concat [show (productId p), " | " , productName p, " | ", show (currentPrice p), " | ", productDescription p]
 
 showProductList :: [Product] -> [String]
 showProductList= map productDetail
