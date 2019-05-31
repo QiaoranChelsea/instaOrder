@@ -6,6 +6,7 @@
 -- where
 
 module Product where 
+
 --
 -- * Interface for Product 
 --
@@ -20,6 +21,8 @@ class Product' p where
 
 -- | Product instance wrapper.
 data Product = forall p. Product' p => Product p
+
+
 
 -- | Operations on wrapped instances.
 productId          (Product p) = productId'  p

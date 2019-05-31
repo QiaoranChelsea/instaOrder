@@ -35,18 +35,6 @@ instance ProductCmd Cmd3  where
     getProduct Cmd3 p = concat [show (productId p), " | " , productName p, " | ", show (currentPrice p)]
 
 
---helper function to get product details and shipping details for completing placeorder command
-
-
---getProductDetail 
-
-data PlaceOrderCmd = PlaceOrderCmd
-
--- concrete command implementation of placing user order
-instance ProductCmd PlaceOrderCmd where
-	placeOrder PlaceOrderCmd   
-
-
 --
 --  **  Invoker Class
 -- 
