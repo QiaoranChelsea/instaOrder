@@ -1,0 +1,12 @@
+.stack-work
+papers
+scratch
+test.prof
+dist
+.tar.gz
+.pgsql
+.sql
+.csv
+.DS_Store
+.cabal
+
