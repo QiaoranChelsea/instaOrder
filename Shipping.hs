@@ -2,8 +2,6 @@
 module Shipping where 
 import Product
 
-
-
 class Shipping' m where
   calculateShippingCost :: m -> Int -> Int
 
@@ -11,9 +9,10 @@ class Shipping' m where
 data Shipping = forall s. Shipping' s => Shipping s
 
 
-
+--
+-- * Instances of different shipping method 
+--
 data Standard = Standard
-
 instance Shipping' Standard where
   calculateShippingCost Standard w = 10 * w
 

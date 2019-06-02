@@ -11,14 +11,12 @@ instance ProductReceiver Order where
     searchProduct Order p = execute Cmd3 p
 
 
-
 data PlaceOrderCmd = PlaceOrderCmd
 
--- concrete command implementation of placing user order
+-- | concrete command implementation of placing user order
 instance ProductCmd PlaceOrderCmd where
     placeOrder PlaceOrderCmd m ps = let plist = getSingleCost ps
                                         get3rd = \(_,_,c) -> c 
-                                        --get2nd = \(_,b,_) -> b 
                                         final = getFinalCost $ map get3rd plist 
                                         shippingcost = getFinalCost $ map (getShippingCost m) $ map snd ps
                                     in Just (plist,final + shippingcost)  

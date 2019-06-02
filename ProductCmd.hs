@@ -1,8 +1,10 @@
+-- | The Invoker and command interface along with concrete command impelemntation 
 module ProductCmd where 
 
 import Product 
 import qualified Data.Map as M
 import Shipping
+
 --
 -- * interface for Command
 --
@@ -10,44 +12,37 @@ import Shipping
 -- | interface 
 class  ProductCmd cmd  where 
     getProduct :: cmd -> Product -> String 
-
-    -- Return (([pid,Qty,cost]),finalCost)
     placeOrder :: Shipping' m => cmd -> m -> [(Product,Int)] -> Maybe ([(Product,Int,Int)],Int)   
 
+
 --
---  ** concrete command  
+--  ** concrete command as instances 
 -- 
 
 data Cmd1 = Cmd1 
 
--- | concrete command1  
+-- | concrete command1 : give products' (name + price + description) 
 instance ProductCmd Cmd1 where 
     getProduct Cmd1 p = concat [ productName p, " | ", show (currentPrice p), " | ", productDescription p]
 
 
 data Cmd2 = Cmd2
--- | concrete command2 
+-- | concrete command2 : give products' ( id + name + price + description) 
 instance ProductCmd Cmd2  where 
     getProduct Cmd2 p = concat [show (productId p), " | " , productName p, " | ", show (currentPrice p), " | ", productDescription p]
 
 data Cmd3 = Cmd3
--- | concrete command2 
+-- | concrete command2 : give products' ( id + name + price)  
 instance ProductCmd Cmd3  where 
     getProduct Cmd3 p = concat [show (productId p), " | " , productName p, " | ", show (currentPrice p)]
 
+-- data PlaceOrderCmd = PlaceOrderCmd
+-- instance ProductCmd PlaceOrderCmd where
+    
 
 --
 --  **  Invoker Class
 -- 
-
--- | try function 
--- register :: ProductCmd cmd =>  M.Map String cmd
--- register = M.fromList [("u1", Cmd1),("u2", Cmd2)]
-
--- execute ::  String -> String -> Product ->  String  
--- execute role cmdproductName p = case M.lookup role register of 
---                                 Just cmd -> getProduct cmd p 
---                                 Nothing -> ""
 
 -- |interface 
 
@@ -63,6 +58,8 @@ instance  Invoker Cmd2 where
 instance  Invoker Cmd3 where
     execute = getProduct  
 
+-- instance Invoker PlaceOrderCmd where
+--     execute = placeOrder'
 
 
 

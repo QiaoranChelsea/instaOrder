@@ -2,6 +2,7 @@ module UserRoles where
 
 import ProductCmd
 import Product
+
 --
 -- * interface for Receriver
 --
@@ -15,12 +16,6 @@ class ProductReceiver a  where
 
 instance ProductReceiver User where
     searchProduct User p = execute Cmd1 p
-
-
-instance ProductReceiver Admin where
-    searchProduct Admin p = execute Cmd2 p
-
-
 
 prettyFinalOrder :: Maybe ([(Product,Int,Int)],Int)  -> String 
 prettyFinalOrder (Just (plist, final)) = unlines (map (\(p,q,c) -> getProduct Cmd1 p ++ ", Qty:"  ++ show q ++ ", Cost:" ++ show c) plist) ++ "Final cost:" ++ show final  

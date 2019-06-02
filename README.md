@@ -1,5 +1,4 @@
-# instaOrder
+# instaOrder: A Online-or
 
-# Before complile
-** run `cabal install csv`
 
+## Description

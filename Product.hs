@@ -1,10 +1,6 @@
 {-# LANGUAGE ExistentialQuantification #-}
 
 -- | Product : A type class-based implementation of object-oriented Object
--- module Product
---   (Product, Product', item1, item2, item3, productId, productName, currentPrice, productDescription) 
--- where
-
 module Product where 
 
 --
@@ -21,8 +17,6 @@ class Product' p where
 
 -- | Product instance wrapper.
 data Product = forall p. Product' p => Product p
-
-
 
 -- | Operations on wrapped instances.
 productId          (Product p) = productId'  p
@@ -70,16 +64,7 @@ instance Product' Item3 where
   productDescription' _ = "Its a thriller story by Jessica Shaw"
   
 
---
--- ** Examples 
---
-plist = [Product Item1, Product Item2, Product Item3]
 
-productDetail :: Product -> String 
-productDetail = \p -> concat [show (productId p), " | " , productName p, " | ", show (currentPrice p), " | ", productDescription p]
-
-showProductList :: [Product] -> [String]
-showProductList= map productDetail
 
 
 
