@@ -6,7 +6,8 @@ The domain of the project is an online order management system, implemented in H
 Within the core system, the user could search the product detail in Product Module, check the products’ availability based on the information of inventory, and also could place the order from third party vendor if products are out of stock. An inventory is a warehouse module containing availability of each product and location of the vendor.
 
 ## Step to run
-`git clone `
+`git clone https://github.com/QiaoranChelsea/instaOrder.git`
+`cd instaOrder`
 `ghci Main.hs` 
 
 ## Examples
