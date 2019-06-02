@@ -7,7 +7,9 @@ Within the core system, the user could search the product detail in Product Modu
 
 ## Step to run
 `git clone https://github.com/QiaoranChelsea/instaOrder.git`
+
 `cd instaOrder`
+
 `ghci Main.hs` 
 
 ## Examples
