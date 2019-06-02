@@ -1,4 +1,4 @@
-# instaOrder: A Online-or
+# instaOrder: An online order management system 
 
 
 ## Description
