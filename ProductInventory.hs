@@ -1,6 +1,6 @@
 -- | Inventory Module
 module ProductInventory where 
-
+{-
 import Text.CSV
 
 -- | TODO: use let to wrap value with IO monad 
@@ -21,3 +21,4 @@ extractColumn csv n =
                        , length record > n
                        , record /= [""] ]
 
+-}
