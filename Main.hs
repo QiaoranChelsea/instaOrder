@@ -32,13 +32,17 @@ ex1 = searchProduct User item1
 ex2 = searchProduct Admin item1 
 
 -- | 3. Place order with UserRoles as User and choose Standard shipping method
-ex3 =  putStrLn $ prettyFinalOrder $ placeOrder PlaceOrderCmd Standard [(Product Item1, 1), (Product Item2, 5)]
+--ex3 =  putStrLn $ prettyFinalOrder $ placeOrder PlaceOrderCmd Standard [(Product Item1, 1), (Product Item2, 5)]
 
 -- | 4. Search old prodcut with extended attribute 
 ex4 =  searchNewProductKind User Item1
 
 -- | 5. search new kind 
 ex5 = searchNewProductKind User NewKind1
+
+-- | 6. Place order with UserRoles as User and choose Standard shipping method
+ex3 =  putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 5)]
+
 
 
 plist = [Product Item1, Product Item2, Product Item3]

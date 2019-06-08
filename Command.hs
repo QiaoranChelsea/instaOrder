@@ -12,7 +12,7 @@ import Shipping
 -- | interface 
 class  Command cmd  where 
     getProduct :: cmd -> Product -> String 
-    placeOrder :: Shipping' m => cmd -> m -> [(Product,Int)] -> Maybe ([(Product,Int,Int)],Int)   
+    placeOrder' :: Shipping' m => cmd -> m -> [(Product,Int)] -> Maybe ([(Product,Int,Int)],Int)   
 
 
 --
@@ -46,7 +46,8 @@ instance Command Cmd3  where
 -- |interface 
 
 class Command cmd => Invoker cmd where 
-    execute :: cmd -> Product -> String 
+    execute      :: cmd -> Product -> String 
+    executeOrder ::  Shipping' m => cmd -> m -> [(Product,Int)]-> String 
 
 instance Invoker Cmd1 where 
     execute = getProduct 
@@ -55,10 +56,10 @@ instance  Invoker Cmd2 where
     execute = getProduct  
 
 instance  Invoker Cmd3 where
-    execute = getProduct  
+    execute = getProduct 
 
--- instance Invoker PlaceOrderCmd where
---     execute = placeOrder'
+
+
 
 
 
