@@ -52,6 +52,13 @@ orderListEx :: [(Product, Int)]
 orderListEx = [(Product Item1, 1), (Product Item2, 5)]
 
 --Instance PlaceOrderReceiver 
-prettyFinalOrder :: Maybe ([(Product,Int,Int)],Int)  -> String 
-prettyFinalOrder (Just (plist, final)) = unlines (map (\(p,q,c) -> getProduct Cmd1 p ++ ", Qty:"  ++ show q ++ ", Cost:" ++ show c) plist) ++ "Final cost:" ++ show final  
+prettyFinalOrder :: Maybe ([(Product,Qty,Price)],Int)  -> String 
+prettyFinalOrder (Just (plist, final)) = unlines (map prettyInvoice plist) ++ "Final cost:" ++ show final  
 prettyFinalOrder _ = "Error: Order can't be placed."
+
+prettyInvoice :: (Product,Qty,Price) -> String 
+prettyInvoice (p, qty, price) = let curP = currentPrice p in
+                                case curP == price `div` qty of 
+                                    True ->  getProduct Cmd1 p ++ ", Qty:"  ++ show qty ++ ", cost:" ++ show price
+                                    False ->  getProduct Cmd1 p ++ ", Qty:"  ++ show qty ++ ", cost:" ++ show price ++ "(Price changed to $" ++ show (price `div` qty )++ " due to product is not available in inventory, and we'll purchase from vendor)"
+
