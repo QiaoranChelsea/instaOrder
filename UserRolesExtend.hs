@@ -1,7 +1,7 @@
 module UserRolesExtend where
 import Product
 import qualified ProductExtension as NP
-import qualified ProductCmd as PC
+import qualified Command as PC
 import UserRoles
 
 -- | extend new use role: Admin

@@ -1,7 +1,7 @@
 module Main where 
 
 
-import ProductCmd 
+import Command 
 import UserRoles 
 import Product 
 import Order 

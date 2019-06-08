@@ -1,6 +1,6 @@
 module UserRoles where 
 
-import ProductCmd
+import Command
 import Product
 
 --

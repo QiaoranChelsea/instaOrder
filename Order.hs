@@ -2,11 +2,10 @@ module Order where
 
 import UserRoles
 import Product
-import ProductCmd
+import Command
 import Shipping
 
 data Order = Order 
-
 instance ProductReceiver Order where
     searchProduct Order p = execute Cmd3 p
 
@@ -14,7 +13,7 @@ instance ProductReceiver Order where
 data PlaceOrderCmd = PlaceOrderCmd
 
 -- | concrete command implementation of placing user order
-instance ProductCmd PlaceOrderCmd where
+instance Command PlaceOrderCmd where
     placeOrder PlaceOrderCmd m ps = let plist = getSingleCost ps
                                         get3rd = \(_,_,c) -> c 
                                         final = getFinalCost $ map get3rd plist 

@@ -3,7 +3,7 @@
 module ProductExtension where
 
 import Product 
-import ProductCmd
+import Command
 
 -- 
 -- * Extension to add new product using type class and implementing command design pattern for product module
@@ -47,14 +47,14 @@ instance NewKind' Item1 where
 
 -- * Boiler plate code to extend this new kind with command design pattern
 
--- | extension for ProductCmd
-class ProductCmd cmd => KindCmd cmd where
+-- | extension for Command
+class Command cmd => KindCmd cmd where
   getKind :: NewKind' nk => cmd -> nk -> String 
 
 data NewCmd1 = NewCmd1 
 
 -- | since we are use ProductCmnd as super class for KindCmd, it's required
-instance ProductCmd NewCmd1 where 
+instance Command NewCmd1 where 
   getProduct NewCmd1 p = ""
 
 instance KindCmd NewCmd1 where 
