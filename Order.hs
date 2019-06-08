@@ -20,7 +20,7 @@ instance Command PlaceOrderCmd where
                                          get3rd = \(_,_,c) -> c 
                                          final = getFinalCost $ map get3rd plist 
                                          shippingcost = getFinalCost $ map (getShippingCost m) $ map snd ps
-                                     in Just (plist,final + shippingcost)  
+                                     in Just (plist,shippingcost,final + shippingcost)  
 
 
 --invoker instance for placeOrder
@@ -52,13 +52,13 @@ orderListEx :: [(Product, Int)]
 orderListEx = [(Product Item1, 1), (Product Item2, 5)]
 
 --Instance PlaceOrderReceiver 
-prettyFinalOrder :: Maybe ([(Product,Qty,Price)],Int)  -> String 
-prettyFinalOrder (Just (plist, final)) = unlines (map prettyInvoice plist) ++ "Final cost:" ++ show final  
+prettyFinalOrder :: Maybe ([(Product,Qty,Price)],Int,Int)  -> String 
+prettyFinalOrder (Just (plist, shipping, final)) = unlines (map prettyInvoice plist) ++ "Shipping Cost:" ++ show shipping ++ "\n" ++ "Final cost:" ++ show final  
 prettyFinalOrder _ = "Error: Order can't be placed."
 
 prettyInvoice :: (Product,Qty,Price) -> String 
 prettyInvoice (p, qty, price) = let curP = currentPrice p in
                                 case curP == price `div` qty of 
                                     True ->  getProduct Cmd1 p ++ ", Qty:"  ++ show qty ++ ", cost:" ++ show price
-                                    False ->  getProduct Cmd1 p ++ ", Qty:"  ++ show qty ++ ", cost:" ++ show price ++ "(Price changed to $" ++ show (price `div` qty )++ " due to product is not available in inventory, and we'll purchase from vendor)"
+                                    False ->  getProduct Cmd1 p ++ ", Qty:"  ++ show qty ++ ", cost:" ++ show price ++ "\n" ++ "Comments:" ++ "(Price changed to $" ++ show (price `div` qty )++ " due to product is not available in inventory and purchase from external vendor)"
 

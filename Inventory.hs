@@ -2,7 +2,7 @@
 module Inventory where 
 
 import Product 
-import Text.CSV
+--import Text.CSV
 import Vendor
 import Syntax
 
