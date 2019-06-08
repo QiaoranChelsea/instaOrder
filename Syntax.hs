@@ -18,3 +18,5 @@ data Invoice = Invoice { productList :: [(Product,Int,Int)],
                          reason :: String, 
                          totalCost :: Int 
                        }
+    deriving (Show)
+invoiceEx = Invoice [(Product Item1, 1,1)] 1 2 "reson" 4

@@ -11,6 +11,7 @@ import UserRolesExtend
 import Shipping
 
 import Inventory
+import Syntax
 
 
 -- TODO : 1. check whether the Item is already in the Product Module
