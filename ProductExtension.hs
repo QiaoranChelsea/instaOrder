@@ -14,7 +14,7 @@ newItem1 = Product NewItem1
 instance Product' NewItem1 where
   productId'         _ = 4
   productName'        _ = "Alice in Wonderland"
-  currentPrice'       _ = 500
+  currentPrice'       _ = 400
   productDescription' _ = "Fairy Book for children"
 
 
@@ -32,7 +32,7 @@ data NewKind1 = NewKind1
 instance Product' NewKind1 where 
   productId'     _ = 5
   productName'    _ = "Into the Wild"
-  currentPrice'    _ = 100
+  currentPrice'    _ = 500
   productDescription' _ = "A book on Road-trip"  
 
 -- | Extending weight attribute to the newKind1

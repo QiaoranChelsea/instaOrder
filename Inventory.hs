@@ -17,7 +17,7 @@ import Syntax
 --     Right csv -> do let res = printCSV csv  
 --                  return res
 inventory :: Inventory
-inventory = [(1,(20,101)), (2,(15,102)), (3,(27,103)), (4,(6,104))]
+inventory = [(1,(20,100)), (2,(15,200)), (3,(27,300)), (4,(6,400))]
 
 
 -- | 

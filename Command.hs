@@ -4,7 +4,7 @@ module Command where
 import Product 
 import qualified Data.Map as M
 import Shipping
-
+import Syntax 
 --
 -- * interface for Command
 --

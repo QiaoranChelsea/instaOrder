@@ -4,6 +4,8 @@ module Order where
 import Product
 import Command
 import Shipping
+import Syntax
+import Inventory
 
 -- data Order = Order 
 -- instance Receiver Order where
@@ -26,10 +28,19 @@ instance Invoker PlaceOrderCmd where
     executeOrder PlaceOrderCmd m ps = prettyFinalOrder $ placeOrder' PlaceOrderCmd m ps
 
 
+getCurPriceList :: [(Product, Qty)] ->  [(Product, Price)]
+getCurPriceList ps = let pidQtyList = map (\(p,qty) -> (productId p, qty)) ps
+                         pidPriceList = checkFromInventory pidQtyList
+                         productList = map fst ps 
+                         priceList = map snd pidPriceList
+                     in zip productList priceList
 
-getSingleCost :: [(Product,Int)] -> [(Product,Int, Int)]
-getSingleCost ps = map (\(p,i) -> (p,i,(currentPrice p) * i)) ps 
-
+getSingleCost :: [(Product,Qty)] -> [(Product, Qty , Price)]
+getSingleCost ps =  map (\(pro,i) -> (pro,i, (getCurPrice pro) * i)) ps 
+    where   productPriceList = getCurPriceList ps 
+            getCurPrice p = case lookup p productPriceList of 
+                                Nothing -> error "Didn't find the price in invenrory"
+                                Just curPrice -> curPrice
 
 getShippingCost :: Shipping' m => m -> Int -> Int
 getShippingCost m w = calculateShippingCost m w 

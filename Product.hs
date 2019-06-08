@@ -24,7 +24,8 @@ productName        (Product p) = productName' p
 currentPrice       (Product p) = currentPrice'   p
 productDescription (Product p) = productDescription' p
 
-
+instance Eq Product where 
+  p1 == p2 = (productId p1) == (productId p2)
 --
 -- * instances 
 --

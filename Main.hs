@@ -43,7 +43,10 @@ ex4 =  searchNewProductKind User Item1
 ex5 = searchNewProductKind User NewKind1
 
 -- | 6. Place order with UserRoles as User and choose Standard shipping method
-ex3 =  putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 5)]
+ex3 =  putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 50)]
+-- ex6 =  putStrLn $ placeOrder User Standard [(NewKind1, 5)]
+
+
 
 
 
