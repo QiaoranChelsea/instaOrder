@@ -2,6 +2,7 @@
 module Shipping where 
 import Product
 
+
 class Shipping' m where
   calculateShippingCost :: m -> Int -> Int
 

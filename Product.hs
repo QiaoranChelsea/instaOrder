@@ -24,7 +24,11 @@ productName        (Product p) = productName' p
 currentPrice       (Product p) = currentPrice'   p
 productDescription (Product p) = productDescription' p
 
+instance Eq Product where 
+  p1 == p2 = (productId p1) == (productId p2)
 
+instance Show Product where 
+  show p = concat [show (productId p)," | " , productName p, " | " ,show (currentPrice p)]
 --
 -- * instances 
 --

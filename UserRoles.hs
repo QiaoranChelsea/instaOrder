@@ -1,7 +1,9 @@
 module UserRoles where 
 
-import ProductCmd
+import Command
 import Product
+import Shipping
+import Order
 
 --
 -- * interface for Receriver
@@ -11,12 +13,13 @@ import Product
 data User = User 
 data Admin = Admin
 
-class ProductReceiver a  where 
+class Receiver a  where 
     searchProduct ::  a -> Product -> String
+    placeOrder :: Shipping' m => a -> m -> [(Product,Int)] -> String
 
-instance ProductReceiver User where
+instance Receiver User where
     searchProduct User p = execute Cmd1 p
+    placeOrder User m  ps = executeOrder PlaceOrderCmd m ps
 
-prettyFinalOrder :: Maybe ([(Product,Int,Int)],Int)  -> String 
-prettyFinalOrder (Just (plist, final)) = unlines (map (\(p,q,c) -> getProduct Cmd1 p ++ ", Qty:"  ++ show q ++ ", Cost:" ++ show c) plist) ++ "Final cost:" ++ show final  
-prettyFinalOrder _ = "Error: Order can't be placed."
+
+
