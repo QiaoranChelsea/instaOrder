@@ -4,15 +4,16 @@
 ## Description
 The domain of the project is an online order management system, implemented in Haskell.
 
-Within the core system, the user could search the product detail in Product Module, check the products’ availability based on the information of inventory, and also could place the order from third party vendor if products are out of stock. An inventory is a warehouse module containing availability of each product and location of the vendor.
+Within the core system, the user could search the product detail in Product Module, check the products’ availability based on the information of inventory, and also could place the order from third party vendor if products quantities are out of stock. An inventory is a warehouse module containing availability(quantity) of each product.
 
 The system could be used and extended by clients in several ways:
 * Add new instance of product based on Product Modules
 * Add new kinds of product as a new class by extending Product Module.
-* Order product based on different type of products and different Shipping Methods (Standard, Economy and Prime).
-* Extend with new operation through command interface (discussed in section 3) for end user in UserRoles Module (Customer Client).
+* Order product based on different (type and kinds of) products and different Shipping Methods (Standard, Economy and Prime).
+* Extend with new operation through command interface for end user in UserRoles Module (Customer Client).
+* Extend new userRole "Admin" in UserRoleExtend module
 
-## Step to run
+## Steps to run
 * `git clone https://github.com/QiaoranChelsea/instaOrder.git`
 
 * `cd instaOrder`
@@ -20,36 +21,87 @@ The system could be used and extended by clients in several ways:
 * `ghci Main.hs` 
 
 ## Examples
+### Operation for searching product 
 1. search product Item1 with UserRoles as User 
 ```
 > searchProduct User item1
-"Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP"
+"Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP"
 ```
 
-2. search product Item1 with UserRoles as Admin
+2. search product Item1 with UserRoles as Admin (As you can see the productId 1 in the result which is hide from the User)
 ```
 > searchProduct Admin item1 
-"1 | Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP"
+"1 | Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP"
 ```
 
-3. Place order with UserRoles as User and choose Standard shipping method
+3. search new kind of product where the weight (10g) is a new attribute compared to old product.
 ```
-> putStrLn $ prettyFinalOrder $ placeOrder PlaceOrderCmd Standard [(Product Item1, 1), (Product Item2, 5)]
-Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP, Qty:1, Cost:100
-Harry Potter | 200 | Its a fantasy book, Qty:5, Cost:1000
-Final cost:1160
+> searchNKProduct User (NewKind NewKind1)
+"Into the Wild | $500 | 10g | A book on Road-trip"
 ```
 
-4. Search old prodcut with extended attribute
+4. search old product item1 with extended attribute
 ```
-> searchNewProductKind User Item1
-"Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP | 1100"
-```
-
-5. search new kind 
-```
-> searchNewProductKind User NewKind1
-"Into the Wild | 100 | A book on Road-trip | 10"
+> searchNKProduct User (NewKind Item1)
+"Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP"```
 ```
 
+### Operation for placing order
+1. Place order with UserRoles as User and choose Standard shipping method. 
+NOTE: product and quantity is available in Inventory and thus no change in cost of each product
+```
+> putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 10)]
+Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP| Qty:1| cost:$100
+Harry Potter | $200 | Its a fantasy book| Qty:10| cost:$2000
+Shipping Cost:$110
+Final cost:$2210
+```
+2. Place order with UserRoles as User and choose Standard shipping method. 
+NOTE: product quantity is not available in Inventory and thus change in cost of product as it is purchase from 3rd party vendor
+```
+> putStrLn $ placeOrder User Standard [(Product Item1, 25), (Product Item2, 10)]
+Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP| Qty:25| cost:$2750
+Comments:(Price changed to $110 due to product is not available in inventory and purchase from external vendor) 
+Harry Potter | $200 | Its a fantasy book| Qty:10| cost:$2000
+Shipping Cost:$350
+Final cost:$5100
+```
+3. Place order for Newkind Product with UserRoles as User and choose Standard shipping method.
+NOTE: product is available in Inventory
+```
+> putStrLn $ placeNKOrder User Standard  [(NewKind Item1, 10), (NewKind NewKind1, 1)] 
+Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP| Qty:10| cost:$1000
+Into the Wild | $500 | 10g | A book on Road-trip| Qty:1| cost:$500
+Shipping Cost:$110
+Final cost:$1610
+```
+
+### Inventory and Vendor Information
+* Shipping Info
+
+| Shipping Method  | Price |
+| ------------- | ------------- |
+| Standard  | $10  |
+| Economy   | $15  |
+| Prime     | $18  |
+
+* Inventory Info
+
+| Product ID  | Product Qty | Inventory Price |
+| ------------| ----------- |------------- |
+| 1  | 20 | $100  |
+| 2  | 15 | $200  |
+| 3  | 27 | $300  |
+| 4  | 6  | $400  |
+| 5  | 10 | $500  |
+
+* Vendor Info
+
+| Product ID  | Vendor Price |
+| ------------- | ------------- |
+| 1  | $110  |
+| 2  | $210  |
+| 3  | $310  |
+| 4  | $410  |
+| 5  | $510  |
 
