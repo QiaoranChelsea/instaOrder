@@ -29,6 +29,7 @@ instance Eq Product where
 
 instance Show Product where 
   show p = concat [show (productId p)," | " , productName p, " | " ,show (currentPrice p)]
+
 --
 -- * instances 
 --

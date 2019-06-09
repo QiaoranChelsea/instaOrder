@@ -12,7 +12,6 @@ import Order
 -- | interface 
 data User = User 
 
-
 class Receiver a  where 
     searchProduct ::  a -> Product -> String
     placeOrder :: Shipping' m => a -> m -> [(Product,Int)] -> String

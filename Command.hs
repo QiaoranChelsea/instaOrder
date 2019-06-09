@@ -35,8 +35,6 @@ data Cmd3 = Cmd3
 instance Command Cmd3  where 
     getProduct Cmd3 p = concat [show (productId p), " | " , productName p, " | ", "$" ++ show (currentPrice p)]
 
--- data PlaceOrderCmd = PlaceOrderCmd
--- instance Command PlaceOrderCmd where
     
 
 --

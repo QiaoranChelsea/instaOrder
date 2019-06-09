@@ -2,7 +2,7 @@
 module Shipping where 
 import Product
 
-
+-- | type class for diffrent shipping method 
 class Shipping' m where
   calculateShippingCost :: m -> Int -> Int
 
@@ -21,7 +21,6 @@ data Economy = Economy
 instance Shipping' Economy where
   calculateShippingCost Economy w = 15 * w
   
-
 data Prime = Prime
 instance Shipping' Prime where
   calculateShippingCost Prime w = 18 * w
