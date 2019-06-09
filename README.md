@@ -21,17 +21,46 @@ The system could be used and extended by clients in several ways:
 * `ghci Main.hs` 
 
 ## Examples
+
+### operation for searching product 
 1. search product Item1 with UserRoles as User 
 ```
 > searchProduct User item1
-"Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP"
+"Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP"
 ```
 
-2. search product Item1 with UserRoles as Admin
+2. search product Item1 with UserRoles as Admin (As you can see the productId 1 in the result which is hide from the User)
 ```
 > searchProduct Admin item1 
-"1 | Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP"
+"1 | Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP"
 ```
+
+3. search new kind of product where the weight (10g) is a new attribute compared to old product.
+```
+> searchNKProduct User (NewKind NewKind1)
+"Into the Wild | $500 | 10g | A book on Road-trip"
+```
+
+4. Search old product item1 with extended attribute
+```
+> searchNKProduct User (NewKind Item1)
+"Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP"```
+```
+
+### Operation for placing order
+1. Place order with UserRoles as User and choose Standard shipping method. 
+NOTE: product qty is available in this case 
+```
+> putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 10)]
+Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP, Qty:1, cost:$100
+Harry Potter | $200 | Its a fantasy book, Qty:10, cost:$2000
+Shipping Cost:$110
+Final cost:$2210
+```
+
+
+
+
 
 3. Place order with UserRoles as User and choose Standard shipping method
 ```
@@ -47,10 +76,6 @@ Final cost:1160
 "Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP | 1100"
 ```
 
-5. search new kind 
-```
-> searchNewProductKind User NewKind1
-"Into the Wild | 100 | A book on Road-trip | 10"
-```
+
 
 
