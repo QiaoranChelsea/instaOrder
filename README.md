@@ -21,6 +21,29 @@ The system could be used and extended by clients in several ways:
 * `ghci Main.hs` 
 
 ## Examples
+### Inventory and Vendor Information
+* Inventory Info
+
+| Product ID  | Product Qty | Inventory Price |
+| ------------| ----------- |------------- |
+| 1  | 20 | $100  |
+| 2  | 15 | $200  |
+| 3  | 27 | $300  |
+| 4  | 6  | $400  |
+| 5  | 10 | $500  |
+
+* Vendor Info
+
+| Product ID  | Vendor Price |
+| ------------- | ------------- |
+| 1  | $110  |
+| 2  | $210  |
+| 3  | $310  |
+| 4  | $410  |
+| 5  | $510  |
+
+
+
 
 ### Operation for searching product 
 1. search product Item1 with UserRoles as User 
