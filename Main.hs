@@ -43,8 +43,8 @@ ex4 =  searchNKProduct User (NewKind Item1)
 -- | 5. search new kind 
 ex5 = searchNKProduct User (NewKind NewKind1)
 
--- | 6. Place order with UserRoles as User and choose Standard shipping method
-ex3 =  putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 50)]
+-- | 6. Place order with UserRoles as User and choose Standard shipping method (product qty available)
+ex3 =  putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 10)]
 
 -- |  7. Place order with UserRoles as User and choose Admin shipping method
 ex6 =  putStrLn $ placeOrder User Standard [(Product Item1, 50), (Product Item2, 1)]
