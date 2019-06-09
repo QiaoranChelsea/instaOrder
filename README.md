@@ -49,7 +49,7 @@ The system could be used and extended by clients in several ways:
 
 ### Operation for placing order
 1. Place order with UserRoles as User and choose Standard shipping method. 
-NOTE: product qty is available in this case 
+NOTE: product and quantity is available in Inventory and thus no change in cost of each product
 ```
 > putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 10)]
 Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP, Qty:1, cost:$100
