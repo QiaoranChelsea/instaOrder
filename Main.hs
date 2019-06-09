@@ -38,16 +38,27 @@ ex2 = searchProduct Admin item1
 --ex3 =  putStrLn $ prettyFinalOrder $ placeOrder PlaceOrderCmd Standard [(Product Item1, 1), (Product Item2, 5)]
 
 -- | 4. Search old prodcut with extended attribute 
-ex4 =  searchNewProductKind User Item1
+ex4 =  searchNKProduct User (NewKind Item1)
 
 -- | 5. search new kind 
-ex5 = searchNewProductKind User NewKind1
+ex5 = searchNKProduct User (NewKind NewKind1)
 
 -- | 6. Place order with UserRoles as User and choose Standard shipping method
 ex3 =  putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 50)]
 
 -- |  7. Place order with UserRoles as User and choose Admin shipping method
 ex6 =  putStrLn $ placeOrder User Standard [(Product Item1, 50), (Product Item2, 1)]
+
+ex7 = putStrLn $ placeNKOrder User Standard [(NewKind NewKind1, 1)]
+
+ex8 = putStrLn $ placeNKOrder User Standard newkindListEx
+
+-- newkindListEx :: NewKind' nk  => [(nk,Qty)]
+-- newkindListEx = [(Item1, 10), (NewKind1, 1)]
+
+newkindListEx :: [(NewKind,Qty)]
+newkindListEx = [(NewKind Item1, 10), (NewKind NewKind1, 1)] 
+
 
 -- ex6 =  putStrLn $ placeOrder User Standard [(NewKind1, 5)]
 
