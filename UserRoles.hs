@@ -11,7 +11,7 @@ import Order
 
 -- | interface 
 data User = User 
-data Admin = Admin
+
 
 class Receiver a  where 
     searchProduct ::  a -> Product -> String
