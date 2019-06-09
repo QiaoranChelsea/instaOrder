@@ -22,7 +22,7 @@ The system could be used and extended by clients in several ways:
 
 ## Examples
 
-### operation for searching product 
+### Operation for searching product 
 1. search product Item1 with UserRoles as User 
 ```
 > searchProduct User item1
@@ -41,7 +41,7 @@ The system could be used and extended by clients in several ways:
 "Into the Wild | $500 | 10g | A book on Road-trip"
 ```
 
-4. Search old product item1 with extended attribute
+4. search old product item1 with extended attribute
 ```
 > searchNKProduct User (NewKind Item1)
 "Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP"```
@@ -57,7 +57,13 @@ Harry Potter | $200 | Its a fantasy book, Qty:10, cost:$2000
 Shipping Cost:$110
 Final cost:$2210
 ```
-
+2. Place order with UserRoles as User and choose Standard shipping method. 
+NOTE: product quantity is not available in Inventory and thus change in cost of product as it is purchase from 3rd party vendor
+```
+```
+3. Place order with UserRoles as User and choose Standard shipping method.
+NOTE: product is not available in Inventory
+```
 
 
 
