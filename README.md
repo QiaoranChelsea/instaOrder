@@ -90,8 +90,8 @@ Harry Potter | $200 | Its a fantasy book, Qty:10, cost:$2000
 Shipping Cost:$350
 Final cost:$5100
 ```
-3. Place order for Nerkind Product with UserRoles as User and choose Standard shipping method.
-NOTE: product is not available in Inventory
+3. Place order for Newkind Product with UserRoles as User and choose Standard shipping method.
+NOTE: product is available in Inventory
 ```
 > putStrLn $ placeNKOrder User Standard  [(NewKind Item1, 10), (NewKind NewKind1, 1)] 
 Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP, Qty:10, cost:$1000
