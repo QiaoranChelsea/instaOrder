@@ -6,6 +6,7 @@ import UserRoles
 import Shipping
 
 -- | extend new use role: Admin
+data Admin = Admin
 instance Receiver Admin where
     searchProduct Admin p = PC.execute PC.Cmd2 p   
 
