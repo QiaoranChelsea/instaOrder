@@ -83,28 +83,19 @@ Final cost:$2210
 2. Place order with UserRoles as User and choose Standard shipping method. 
 NOTE: product quantity is not available in Inventory and thus change in cost of product as it is purchase from 3rd party vendor
 ```
+> putStrLn $ placeOrder User Standard [(Product Item1, 25), (Product Item2, 10)]
+Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP, Qty:25, cost:$2750
+Comments:(Price changed to $110 due to product is not available in inventory and purchase from external vendor) 
+Harry Potter | $200 | Its a fantasy book, Qty:10, cost:$2000
+Shipping Cost:$350
+Final cost:$5100
 ```
-3. Place order with UserRoles as User and choose Standard shipping method.
+3. Place order for Nerkind Product with UserRoles as User and choose Standard shipping method.
 NOTE: product is not available in Inventory
 ```
-
-
-
-
-3. Place order with UserRoles as User and choose Standard shipping method
+> putStrLn $ placeNKOrder User Standard  [(NewKind Item1, 10), (NewKind NewKind1, 1)] 
+Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP, Qty:10, cost:$1000
+Into the Wild | $500 | 10g | A book on Road-trip, Qty:1, cost:$500
+Shipping Cost:$110
+Final cost:$1610
 ```
-> putStrLn $ prettyFinalOrder $ placeOrder PlaceOrderCmd Standard [(Product Item1, 1), (Product Item2, 5)]
-Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP, Qty:1, Cost:100
-Harry Potter | 200 | Its a fantasy book, Qty:5, Cost:1000
-Final cost:1160
-```
-
-4. Search old prodcut with extended attribute
-```
-> searchNewProductKind User Item1
-"Design Patterns | 100 | Its a introductory book for learning design paradigms in OO and FP | 1100"
-```
-
-
-
-
