@@ -75,8 +75,8 @@ The system could be used and extended by clients in several ways:
 NOTE: product and quantity is available in Inventory and thus no change in cost of each product
 ```
 > putStrLn $ placeOrder User Standard [(Product Item1, 1), (Product Item2, 10)]
-Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP, Qty:1, cost:$100
-Harry Potter | $200 | Its a fantasy book, Qty:10, cost:$2000
+Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP| Qty:1| cost:$100
+Harry Potter | $200 | Its a fantasy book| Qty:10| cost:$2000
 Shipping Cost:$110
 Final cost:$2210
 ```
@@ -84,9 +84,9 @@ Final cost:$2210
 NOTE: product quantity is not available in Inventory and thus change in cost of product as it is purchase from 3rd party vendor
 ```
 > putStrLn $ placeOrder User Standard [(Product Item1, 25), (Product Item2, 10)]
-Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP, Qty:25, cost:$2750
+Design Patterns | $100 | Its a introductory book for learning design paradigms in OO and FP| Qty:25| cost:$2750
 Comments:(Price changed to $110 due to product is not available in inventory and purchase from external vendor) 
-Harry Potter | $200 | Its a fantasy book, Qty:10, cost:$2000
+Harry Potter | $200 | Its a fantasy book| Qty:10| cost:$2000
 Shipping Cost:$350
 Final cost:$5100
 ```
@@ -94,8 +94,8 @@ Final cost:$5100
 NOTE: product is available in Inventory
 ```
 > putStrLn $ placeNKOrder User Standard  [(NewKind Item1, 10), (NewKind NewKind1, 1)] 
-Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP, Qty:10, cost:$1000
-Into the Wild | $500 | 10g | A book on Road-trip, Qty:1, cost:$500
+Design Patterns | $100 | 1100g | Its a introductory book for learning design paradigms in OO and FP| Qty:10| cost:$1000
+Into the Wild | $500 | 10g | A book on Road-trip| Qty:1| cost:$500
 Shipping Cost:$110
 Final cost:$1610
 ```
