@@ -4,15 +4,16 @@
 ## Description
 The domain of the project is an online order management system, implemented in Haskell.
 
-Within the core system, the user could search the product detail in Product Module, check the products’ availability based on the information of inventory, and also could place the order from third party vendor if products are out of stock. An inventory is a warehouse module containing availability of each product and location of the vendor.
+Within the core system, the user could search the product detail in Product Module, check the products’ availability based on the information of inventory, and also could place the order from third party vendor if products quantities are out of stock. An inventory is a warehouse module containing availability(quantity) of each product.
 
 The system could be used and extended by clients in several ways:
 * Add new instance of product based on Product Modules
 * Add new kinds of product as a new class by extending Product Module.
-* Order product based on different type of products and different Shipping Methods (Standard, Economy and Prime).
-* Extend with new operation through command interface (discussed in section 3) for end user in UserRoles Module (Customer Client).
+* Order product based on different (type and kinds of) products and different Shipping Methods (Standard, Economy and Prime).
+* Extend with new operation through command interface for end user in UserRoles Module (Customer Client).
+* Extend new userRole "Admin" in UserRoleExtend module
 
-## Step to run
+## Steps to run
 * `git clone https://github.com/QiaoranChelsea/instaOrder.git`
 
 * `cd instaOrder`
